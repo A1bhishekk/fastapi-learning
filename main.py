@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from router import blog_get, blog_post
+from router import blog_get, blog_post, user
+from db import models, database
 
 
 
@@ -19,6 +20,7 @@ app = FastAPI(
 # import router from the router module
 app.include_router(blog_get.router)
 app.include_router(blog_post.router)
+app.include_router(user.router)
 
 
 
@@ -43,3 +45,7 @@ def index():
             }
     }}
     )
+
+# create all tables in the database
+
+models.Base.metadata.create_all(bind=database.engine)

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query, Path, Body
-from pydantic import BaseModel
+# from pydantic import BaseModel
 from typing import Optional, List, Dict
 from models.blog_model import BlogModel, Image
 
